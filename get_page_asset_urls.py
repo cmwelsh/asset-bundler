@@ -10,3 +10,4 @@ if __name__ == '__main__':
     asset_filenames = get_asset_filenames(base_dir, base_url, **asset_urls)
 
     minify.javascript(asset_filenames['script_filenames'])
+    minify.styles(asset_filenames['style_filenames'])
