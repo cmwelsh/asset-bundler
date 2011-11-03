@@ -1,42 +1,16 @@
-import urllib2
+from asset_bundler.get_url import get_url
+from asset_bundler.html_extractor import HtmlExtractor
 
-response = urllib2.urlopen('http://lmubasketball.local/')
-html = response.read()
+url = "http://lmubasketball.local/"
 
-from BeautifulSoup import BeautifulSoup          # For processing HTML
+html = get_url(url)
 
-soup = BeautifulSoup(html)
+extractor = HtmlExtractor(html, url)
 
-script_tags = soup.findAll('script')
+script_urls = extractor.get_script_urls()
 
-script_urls = []
+print '\n'.join(script_urls)
 
-for tag in script_tags:
-    for attr in tag.attrs:
-        if attr[0] == 'src':
-            script_urls.append(attr[1])
+style_urls = extractor.get_style_urls()
 
-
-from urlparse import urljoin
-
-for url in script_urls:
-    print urljoin("http://lmubasketball.local/", url)
-
-
-
-link_tags = soup.findAll('link')
-
-style_urls = []
-
-for tag in link_tags:
-    for attr in tag.attrs:
-        if attr[0] == 'href':
-            if '.css' in attr[1] or '.less' in attr[1]:
-                print attr[1]
-                style_urls.append(attr[1])
-
-
-from urlparse import urljoin
-
-for url in style_urls:
-    print urljoin("http://lmubasketball.local/", url)
+print '\n'.join(style_urls)
