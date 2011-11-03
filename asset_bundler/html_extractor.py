@@ -15,7 +15,10 @@ class HtmlExtractor:
         for tag in script_tags:
             for attr in tag.attrs:
                 if attr[0] == 'src':
-                    script_urls.append(attr[1])
+                    # exclude less compiler
+                    # TODO: exclude anything in the header
+                    if attr[1].find('/less-') == -1:
+                        script_urls.append(attr[1])
 
         script_urls = map(
             lambda url: urljoin(self.url, url),
