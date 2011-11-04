@@ -1,0 +1,12 @@
+This application will check your page and see what JavaScript and CSS files
+you included and what the order is.
+
+Then it will check your development folder for those files, concatenate them,
+and minify them.
+
+JavaScript files are minified using:
+Google Closure Compiler Build r1459
+
+CSS and LESS files are minified using:
+YUI Compressor 2.4.6
+LESSCSS Engine 1.1.4
