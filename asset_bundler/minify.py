@@ -57,4 +57,4 @@ def styles(style_filenames):
     concatenate_stylesheets(style_filenames)
     minify_stylesheet()
 
-    subprocess.call('gzip -c mini.css > site.min.gz.css', shell=True)
+    subprocess.call('gzip -c site.min.css > site.min.gz.css', shell=True)

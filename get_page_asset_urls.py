@@ -13,4 +13,4 @@ if __name__ == '__main__':
     minify.javascript(asset_filenames['script_filenames'])
     minify.styles(asset_filenames['style_filenames'])
 
-    upload_assets();
+    #upload_assets();
