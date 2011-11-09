@@ -3,11 +3,9 @@ from asset_bundler import minify
 from asset_bundler.s3_uploads import upload_assets
 
 def start_bundler(options):
-    print options
-    return
-    url = "http://coachsark.local/"
-    base_dir = '/Users/cmwelsh/code/dev/coachsark/project/html/'
-    base_url = 'http://coachsark.local/'
+    url = options.extract_url
+    base_dir = options.base_dir
+    base_url = options.base_url
 
     asset_urls = get_asset_urls(url)
     asset_filenames = get_asset_filenames(base_dir, base_url, **asset_urls)
