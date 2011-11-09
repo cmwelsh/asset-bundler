@@ -5,9 +5,9 @@ from asset_bundler.s3_uploads import upload_assets
 def start_bundler(options):
     print options
     return
-    url = "http://lmubasketball.local/"
-    base_dir = '/Users/cmwelsh/code/dev/lmubasketball/project/html/'
-    base_url = 'http://lmubasketball.local/'
+    url = "http://coachsark.local/"
+    base_dir = '/Users/cmwelsh/code/dev/coachsark/project/html/'
+    base_url = 'http://coachsark.local/'
 
     asset_urls = get_asset_urls(url)
     asset_filenames = get_asset_filenames(base_dir, base_url, **asset_urls)
