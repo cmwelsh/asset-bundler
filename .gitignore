@@ -1,3 +1,4 @@
 *.pyc
 env
 *.sublime*
+/asset_bundler/config/aws.py
