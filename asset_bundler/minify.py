@@ -3,6 +3,9 @@ import subprocess
 
 def javascript(script_filenames):
     output_filename = 'site.min.js'
+    # erase file
+    subprocess.call('echo '' > %(filename)s' % { 'filename': output_filename }, shell=True)
+    # run closure compiler
     command = 'java -jar lib/closurecompiler/compiler.jar'
     for filename in script_filenames:
         if os.path.isfile(filename):
@@ -19,6 +22,9 @@ def javascript(script_filenames):
 
 def styles(style_filenames):
     def concatenate_stylesheets(filenames):
+        # FIXME: directly appending the binary contents is an invalid way to
+        #        concatenate text files, but the step after this will fix the
+        #        byte order mark (BOM) and all that stuff
         output_filename = 'concat.css'
         subprocess.call('echo '' > %(filename)s' % { 'filename': output_filename }, shell=True)
 
